@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8" />
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<h3>난수 발생 후 합 구하기</h3>
+	<script>
+		while (true) {
+			var max = prompt("최댓값을 입력하세요.", "");
+			var min = prompt("최솟값을 입력하세요.", "");
+			max = parseInt(max);
+			min = parseInt(min);
+			
+			if (max > min)
+				break;
+
+			alert("최댓값이 더 작거나 같습니다. 다시입력하세요.");
+		}
+
+		while (true) {
+			var num = prompt("추출 개수를 입력하세요.", "");
+
+			if (num >= 5 && num <= 10)
+				break;
+
+			alert("5~10 중 하나의 값을 입력하세요.");
+		}
+
+		document.write("<table border='1'>");
+		var sum = 0;
+
+		for (var i = 1; i <= num; i++) {
+			var n = (Math.floor(Math.random() * (max - min + 1)) + min);
+			document.write("<tr><td>" + i + "</td><td>" + n + "</td></tr>");
+			sum += parseInt(n);
+		}
+
+		document.write("<tr><td>sum</td><td>" + sum + "</td></tr>");
+		document.write("</table>");
+	</script>
+</body>
+
+</html>
