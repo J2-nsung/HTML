@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script>
+		var rand1 = new Array();
+		var rand2 = new Array();
+		var tmp = new Array();
+
+		function randArrCreate() {
+			for (var i = 0; i < 20; i++) {
+				var n = (Math.floor(Math.random() * (500 - 10 + 1)) + 10);
+				rand1.push(n);
+			}
+
+			for (var i = 0; i < 30; i++) {
+				var n = (Math.floor(Math.random() * (500 - 10 + 1)) + 10);
+				rand2.unshift(n);
+			}
+
+			for (var i = 0; i < 30; i++) {
+				rand1.splice((10 + i), 0, rand2[i]);
+			}
+		}
+
+		function showArr(ar) {
+				for (var i = 0; i < ar.length; i++) {
+					document.write(ar[i] + " ");
+
+					if ((i + 1) % 10 == 0)
+						document.write("<br>");
+				}
+		}
+
+		function getMaxMin() {
+			showArr(rand1);
+			rand1.sort(function(a, b) {return a - b;});
+			document.write("<br>Max: " + rand2[rand2.length-1] + ", Min: " + rand2[0]);
+		}
+		
+		function findVal(){
+            tmp = tmp.concat(rand1);
+			alert(rand1.sort(function(a, b) {return a - b;}));
+			var num = prompt("찾고자 하는 수를 입력하세요.", "");
+			num = parseInt(num);
+			
+			showArr(tmp);
+			document.write("<br>찾는 값 위치: ");
+			
+			for(var i = 0; i < tmp.length; i++){
+				if(num == tmp[i])
+					document.write(i + " ");
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<fieldset>
+		<legend>배열 함수 다루기</legend>
+		<input type="button" value="랜덤배열생성" onclick="randArrCreate()"><br>
+		<input type="button" value="최대최소" onclick="getMaxMin()">
+		<input type="button" value="원소찾기" onclick="findVal()">
+	</fieldset>
+</body>
+
+</html>
